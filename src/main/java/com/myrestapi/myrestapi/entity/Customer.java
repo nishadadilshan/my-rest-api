@@ -1,7 +1,6 @@
 package com.myrestapi.myrestapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,11 +25,11 @@ public class Customer {
     @Column(name = "birthday")
     private Date birthday;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(name = "created_date")
     private Date created_date;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(name = "modify_date")
     private Date modify_date;
 
