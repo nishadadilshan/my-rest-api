@@ -28,6 +28,12 @@ public class CustomerController {
         Customer user = new Customer();
         user.setName(newCustomer.getName());
         user.setEmail(newCustomer.getEmail());
+        user.setCity(newCustomer.getCity());
+        user.setAddress(newCustomer.getAddress());
+        user.setBirthday(newCustomer.getBirthday());
+        user.setCountry(newCustomer.getCountry());
+        user.setModify_date(newCustomer.getModify_date());
+        user.setCreated_date(newCustomer.getCreated_date());
         customerRepository.save(user);
         return user;
     }
@@ -51,6 +57,12 @@ public class CustomerController {
                 .map(customer -> {
                     customer.setName(updateCustomer.getName());
                     customer.setEmail(updateCustomer.getEmail());
+                    customer.setCity(updateCustomer.getCity());
+                    customer.setCountry(updateCustomer.getCountry());
+                    customer.setAddress(updateCustomer.getAddress());
+                    customer.setBirthday(updateCustomer.getBirthday());
+                    customer.setCreated_date(updateCustomer.getCreated_date());
+                    customer.setModify_date(updateCustomer.getModify_date());
                     customerRepository.save(customer);
                     return "Customer details have been successfully updated!";
                 }).orElseGet(() -> {
@@ -58,10 +70,13 @@ public class CustomerController {
                 });
     }
 
+
     // delete customer
     @DeleteMapping("delete/{id}")
     public String delete(@PathVariable("id") Integer id) {
         customerRepository.deleteById(id);
         return "Customer has been successfully deleted!";
     }
+
+
 }
